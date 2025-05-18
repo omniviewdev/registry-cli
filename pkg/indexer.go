@@ -29,7 +29,8 @@ type Indexer struct {
 }
 
 type IndexerOpts struct {
-	Bucket string
+	Bucket  string
+	Version string
 }
 
 func (p *IndexerOpts) Defaulter() {

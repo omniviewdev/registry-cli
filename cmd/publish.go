@@ -44,7 +44,10 @@ the indexes within the registry to show the new version.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		switch len(args) {
 		case 0:
-			return cmd.Help()
+			// TODO: validate the version string
+			return fmt.Errorf(
+				"Missing plugin string. Please provide as the first argument to 'publish'",
+			)
 		case 1:
 			// TODO: validate the version string
 			return fmt.Errorf(
@@ -93,14 +96,6 @@ the indexes within the registry to show the new version.`,
 func init() {
 	rootCmd.AddCommand(publishCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// publishCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
 	publishCmd.Flags().StringVarP(&bucket, "bucket", "b", "", "bucket to upload to")
 	publishCmd.Flags().StringVarP(&metadata, "metadata", "m", "", "path to plugin metadata file")
 	publishCmd.Flags().StringVar(&darwin_arm64, "darwin_arm64", "", "path to a darwin/arm64 build")

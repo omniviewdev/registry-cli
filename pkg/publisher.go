@@ -23,7 +23,8 @@ type Publisher struct {
 }
 
 type PublisherOpts struct {
-	Bucket string
+	Bucket  string
+	Version string
 }
 
 func (p *PublisherOpts) Defaulter() {
